@@ -15,3 +15,6 @@ To run the hot zone analysis execute at the project root:
 6. 
 To run hot cell analysis execute at the project root:
 	:>spark-submit target\scala-2.11\CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar test/output hotcellanalysis src/resources/yellowtripsample100000.csv
+7. 
+To run both hotZone and hotcell analysis execute: 
+	:>spark-submit target\scala-2.11\CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar test/output hotzoneanalysis src/resources/pointhotzone.csv src/resources/zonehotzone.csv hotcellanalysis src/resources/yellowtripsample100000.csv
