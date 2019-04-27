@@ -1,0 +1,17 @@
+Complete instructions on How to Setup and run Phase2 on a Windows 10 machine using VSCode:
+1. 
+Follow instructions in ../CSE511-Project_Phase2/teamOneSetupNotes.txt
+3. 
+To compile open a command prompt and execute `:>sbt assembly` at root of project. 
+This creates create directory ./target and jar compiled file at .\target\scala-2.11\CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar 
+4. 
+There are issues with file names containing the character '-'. Spark encounteres fatal error trying to read them
+Copy src/resources/point-hotzone.csv to src/resources/pointhotzone.csv
+Copy src/resources/zonehotzone.csv to src/resources/zonehotzone.csv
+Copy src/resources/yellowtripsample100000.csv to src/resources/yellowtripsample100000.csv
+5. 
+To run the hot zone analysis execute at the project root: 
+	:>spark-submit target\scala-2.11\CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar test/output hotzoneanalysis src/resources/pointhotzone.csv src/resources/zonehotzone.csv
+6. 
+To run hot cell analysis execute at the project root:
+	:>spark-submit target\scala-2.11\CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar test/output hotcellanalysis src/resources/yellowtripsample100000.csv

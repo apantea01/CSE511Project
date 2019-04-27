@@ -30,8 +30,13 @@ object HotzoneAnalysis {
     joinDf.createOrReplaceTempView("joinResult")
 
     // YOU NEED TO CHANGE THIS PART
+    // TEAM ONE: Code Below this line was changed
 
-    return joinDf // YOU NEED TO CHANGE THIS PART
+    // Call sql(...).coalesce(1) in order to produce only one output file containins all the results
+    // fo the SQL Statement
+    val resultDF = spark.sql("select rectangle, count(point) as points from joinResult group by rectangle order by rectangle").coalesce(1)
+    resultDF.show()
+    return resultDF
   }
 
 }
