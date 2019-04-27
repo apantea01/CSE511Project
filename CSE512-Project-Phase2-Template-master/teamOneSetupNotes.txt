@@ -1,0 +1,26 @@
+Complete instructions on How to Setup and run Phase2 on a Windows 10 machine using VSCode:
+1. 
+Install spark and scala as mentioned in video https://www.youtube.com/watch?v=WlE7RNdtfwE.
+2. 
+Download the project template called "CSE512-Project-Phase2-Template-master (2).zip" from 
+https://www.coursera.org/learn/cse511/supplement/AJVde/project-milestone-2-introduction-to-course-project-spatial-queries. Unzip this in a folder on your computer. 
+3. 
+Install SBT from https://www.scala-sbt.org/download.html. SBT is used to compile the scala code into a jar file
+4. 
+You can use any code editor. I used VSCode because its simple, free, and popular. 
+Download and install VSCode from https://code.visualstudio.com. After installation launch VSCode, go to extensions and search for "scala". 
+Install extension called Scala (Description: Scala support for Visual Studio code).This will give you typeahead and readability for .scala files in VSCode. 
+To open the project in VSCode click file>>OpenFolder and select the folder you downloaded in step #2. 
+Then inside VSCode navigate (using left navigation bar) and open file ./src/main/scala/cse512/SpatialQuery.scala. 
+This is the file that needs to be modified for Phase2. The modified code for this file is visible in step #7
+5. 
+To compile open a command prompt and execute `:>sbt assembly` at root of project. 
+This creates create directory ./target and jar compiled file at .\target\scala-2.11\CSE512-Project-Phase2-Template-assembly-0.1.0.jar. 
+This will run a long time the first time you run it as it downloads dependencies. 
+6. 
+To run the rangeQuery test open a cmd prompt and execute spark execute at the project root: 
+	`:>spark-submit target\scala-2.11\CSE512-Project-Phase2-Template-assembly-0.1.0.jar result/output rangequery src/resources/arealm10000.csv -93.63173,33.0183,-93.359203,33.219456`. 
+This will create a folder called ./result/output1. 
+To run all tests in spark from cmd prompt execute: 
+	`:>spark-submit target\scala-2.11\CSE512-Project-Phase2-Template-assembly-0.1.0.jar result/output rangequery src/resources/arealm10000.csv -93.63173,33.0183,-93.359203,33.219456 rangejoinquery src/resources/arealm10000.csv src/resources/zcta10000.csv distancequery src/resources/arealm10000.csv -88.331492,32.324142 1 distancejoinquery src/resources/arealm10000.csv src/resources/arealm10000.csv 0.1`. 
+This will create result folder ./result with sub folders output0, output1, output2, and output3
